@@ -1,0 +1,641 @@
+/* ============================================================
+   THEME "CAHIER" — identité visuelle e-learning
+   Papier, grille de cahier, encre marine, tampon rouge correcteur
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+:root {
+    --paper: #F6F1E7;
+    --paper-deep: #EFE7D6;
+    --paper-line: #DDD2BC;
+    --ink: #1D2B4F;
+    --ink-soft: #56607A;
+    --red: #B33A31;
+    --red-dark: #8F2E27;
+    --green: #2F6F4E;
+    --green-dark: #23533B;
+    --gold: #C98A2B;
+    --radius: 6px;
+    --shadow-card: 0 1px 2px rgba(29, 43, 79, 0.06), 0 8px 20px -8px rgba(29, 43, 79, 0.18);
+    /* Réhabillage des couleurs Bootstrap (variables CSS Bootstrap 5.3+) */
+    --bs-primary: var(--red);
+    --bs-primary-rgb: 179, 58, 49;
+    --bs-success: var(--green);
+    --bs-success-rgb: 47, 111, 78;
+    --bs-warning: var(--gold);
+    --bs-warning-rgb: 201, 138, 43;
+    --bs-danger: #8F2E27;
+    --bs-danger-rgb: 143, 46, 39;
+    --bs-info: var(--ink-soft);
+    --bs-info-rgb: 86, 96, 122;
+    --bs-dark: var(--ink);
+    --bs-dark-rgb: 29, 43, 79;
+    --bs-light: var(--paper-deep);
+    --bs-light-rgb: 239, 231, 214;
+    --bs-body-bg: var(--paper);
+    --bs-body-color: var(--ink);
+    --bs-border-color: var(--paper-line);
+    --bs-link-color: var(--red);
+    --bs-link-hover-color: var(--red-dark);
+}
+
+
+/* ---------- Base ---------- */
+
+html,
+body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+#root {
+    min-height: 100vh;
+    width: 100%;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    text-align: left !important;
+    display: flex;
+    flex-direction: column;
+    background: repeating-linear-gradient( to bottom, transparent, transparent 27px, rgba(29, 43, 79, 0.045) 28px);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+}
+
+a {
+    color: var(--red);
+}
+
+a:hover {
+    color: var(--red-dark);
+}
+
+small,
+.text-muted {
+    color: var(--ink-soft) !important;
+}
+
+
+/* Focus visible partout, sans casser l'UX clavier */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+
+/* ---------- Navbar & Footer : couverture du cahier ---------- */
+
+.navbar.bg-dark,
+footer.bg-dark {
+    background-color: var(--ink) !important;
+    border-bottom: 3px solid var(--red);
+}
+
+footer.bg-dark {
+    border-bottom: none;
+    border-top: 3px solid var(--red);
+    margin-top: auto;
+}
+
+.navbar-brand,
+.navbar .nav-link,
+footer h5,
+footer p {
+    font-family: 'Fraunces', serif;
+}
+
+.navbar .nav-link {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color: rgba(246, 241, 231, 0.85) !important;
+    transition: color 0.15s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #fff !important;
+}
+
+.brand-stamp {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--red);
+    border-radius: 50%;
+    color: var(--red);
+    margin-right: 8px;
+    transform: rotate(-6deg);
+}
+
+footer p {
+    color: rgba(246, 241, 231, 0.75);
+}
+
+footer h5 {
+    color: #fff;
+}
+
+
+/* ---------- Boutons : tamponnés, pas de pilule ---------- */
+
+.btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border-width: 2px;
+    letter-spacing: 0.01em;
+}
+
+.btn-primary {
+    background-color: var(--red) !important;
+    border-color: var(--red) !important;
+    color: #fff !important;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--red-dark) !important;
+    border-color: var(--red-dark) !important;
+}
+
+.btn-success {
+    background-color: var(--green) !important;
+    border-color: var(--green) !important;
+}
+
+.btn-success:hover {
+    background-color: var(--green-dark) !important;
+    border-color: var(--green-dark) !important;
+}
+
+.btn-warning {
+    background-color: var(--gold) !important;
+    border-color: var(--gold) !important;
+    color: #fff !important;
+}
+
+.btn-danger {
+    background-color: var(--red-dark) !important;
+    border-color: var(--red-dark) !important;
+}
+
+.btn-secondary {
+    background-color: var(--ink-soft) !important;
+    border-color: var(--ink-soft) !important;
+}
+
+.btn-light {
+    background-color: var(--paper) !important;
+    border-color: var(--ink) !important;
+    color: var(--ink) !important;
+}
+
+
+/* ---------- Cartes : fiches bristol ---------- */
+
+.card {
+    background-color: #fff;
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card) !important;
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: repeating-linear-gradient( 90deg, var(--ink) 0 10px, transparent 10px 14px);
+    opacity: 0.15;
+}
+
+.card-title {
+    font-family: 'Fraunces', serif;
+    color: var(--ink);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    transition: transform 0.15s ease;
+}
+
+
+/* ---------- Tampon prix / statut (élément signature) ---------- */
+
+.price-stamp {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    color: var(--red);
+    border: 2px dashed var(--red);
+    border-radius: 50%;
+    width: 78px;
+    height: 78px;
+    transform: rotate(-8deg);
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+    flex-direction: column;
+    margin: 6px 0 10px;
+}
+
+.price-stamp small {
+    font-size: 0.65rem;
+    letter-spacing: 0.05em;
+}
+
+
+/* ---------- Formulaires : lignes de cahier ---------- */
+
+.form-control,
+.form-select {
+    background-color: #fff;
+    border: 1px solid var(--paper-line);
+    border-radius: var(--radius);
+    color: var(--ink);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--ink);
+    box-shadow: 0 0 0 3px rgba(29, 43, 79, 0.12);
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 0.92rem;
+}
+
+
+/* ---------- Alertes : notes en marge ---------- */
+
+.alert {
+    border-radius: var(--radius);
+    border-left: 4px solid transparent;
+    font-family: 'Inter', sans-serif;
+}
+
+.alert-info {
+    border-left-color: var(--ink-soft);
+    background: #EEF1F6;
+    color: var(--ink);
+}
+
+.alert-danger {
+    border-left-color: var(--red);
+    background: #FBEAE8;
+    color: var(--red-dark);
+}
+
+.alert-warning {
+    border-left-color: var(--gold);
+    background: #FBF1DE;
+    color: #7A5417;
+}
+
+.alert-primary {
+    border-left-color: var(--red);
+    background: #FBEAE8;
+    color: var(--red-dark);
+}
+
+
+/* ---------- Hero (Home) ---------- */
+
+.hero-notebook {
+    background-color: var(--ink) !important;
+    background-image: radial-gradient(circle at 90% 10%, rgba(179, 58, 49, 0.25), transparent 45%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-notebook h1 {
+    color: #fff;
+    font-family: 'Fraunces', serif;
+}
+
+.hero-notebook p {
+    color: rgba(246, 241, 231, 0.85);
+}
+
+
+/* ---------- Page 404 : copie annotée ---------- */
+
+.notfound-stamp {
+    display: inline-block;
+    border: 4px solid var(--red);
+    color: var(--red);
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 600;
+    padding: 10px 26px;
+    border-radius: 10px;
+    transform: rotate(-7deg);
+    letter-spacing: 0.08em;
+    margin-bottom: 1.2rem;
+}
+
+
+/* ---------- Badges ---------- */
+
+.badge.bg-primary {
+    background-color: var(--red) !important;
+}
+
+
+/* ============================================================
+   AJOUTS — fonctionnalités pro (toasts, skeletons, nav active)
+   ============================================================ */
+
+
+/* Navbar : lien actif */
+
+.navbar .nav-link.active {
+    color: #fff !important;
+    position: relative;
+}
+
+.navbar .nav-link.active::after {
+    content: "";
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    bottom: -2px;
+    height: 2px;
+    background: var(--red);
+}
+
+.navbar.sticky-top {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    z-index: 1030;
+}
+
+
+/* Toasts */
+
+.toast-stack {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border-left: 4px solid var(--ink);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    padding: 12px 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: var(--ink);
+    min-width: 240px;
+    animation: toast-in 0.2s ease;
+}
+
+.toast-success {
+    border-left-color: var(--green);
+}
+
+.toast-error {
+    border-left-color: var(--red);
+}
+
+.toast-info {
+    border-left-color: var(--ink-soft);
+}
+
+@keyframes toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+
+/* Skeleton loaders */
+
+.skeleton-card {
+    background: linear-gradient(90deg, var(--paper-deep) 25%, #fff 50%, var(--paper-deep) 75%);
+    background-size: 400% 100%;
+    animation: skeleton-shimmer 1.4s ease-in-out infinite;
+    min-height: 220px;
+    border: 1px solid var(--paper-line);
+}
+
+@keyframes skeleton-shimmer {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
+
+
+/* Search bar */
+
+.input-group-text {
+    border-color: var(--paper-line);
+}
+
+
+/* Petits boutons outline utilisés sur les cartes admin */
+
+.btn-outline-dark {
+    border-color: var(--ink);
+    color: var(--ink);
+}
+
+.btn-outline-dark:hover {
+    background-color: var(--ink);
+    color: #fff;
+}
+
+.btn-outline-danger {
+    border-color: var(--red);
+    color: var(--red);
+}
+
+.btn-outline-danger:hover {
+    background-color: var(--red);
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ============================================================
+   AJOUTS — largeur desktop, tableau Manage Courses
+   ============================================================ */
+
+
+/* Empêche tout débordement horizontal indésirable */
+
+html,
+body {
+    overflow-x: hidden;
+}
+
+
+/* Layout plein écran avec padding, comme un site pro (pas de colonne centrée
+   avec de grandes marges vides sur les côtés) */
+
+.container,
+.container-fluid {
+    width: 100%;
+    max-width: 100% !important;
+    padding-left: clamp(1.25rem, 4vw, 4rem);
+    padding-right: clamp(1.25rem, 4vw, 4rem);
+}
+
+
+/* Tableau "Manage Courses" dans le thème du site */
+
+.table {
+    --bs-table-bg: transparent;
+    color: var(--ink);
+    margin-bottom: 0;
+}
+
+.table thead {
+    background-color: var(--ink);
+}
+
+.table thead th {
+    color: #fff;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    border: none;
+    padding: 14px 16px;
+}
+
+.table tbody td {
+    padding: 14px 16px;
+    border-color: var(--paper-line);
+    vertical-align: middle;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--paper-deep);
+}
+
+
+/* Spinner de vérification email */
+
+.spin {
+    animation: spin 0.8s linear infinite;
+    color: var(--ink-soft);
+}
+
+@keyframes spin {
+    to {
+        transform: translateY(-50%) rotate(360deg);
+    }
+}
+
+
+/* Pagination */
+
+.btn-outline-dark:disabled {
+    opacity: 0.4;
+}
+
+
+/* Liste "Comment ça marche" (About) */
+
+ol li {
+    padding-left: 4px;
+}
+
+
+/* Bannière de page (haut de Courses/Instructors/Contact...) */
+
+.page-banner {
+    background-color: var(--ink);
+    background-size: cover;
+    background-position: center;
+    padding: 64px 0;
+    margin-bottom: 0;
+}
+
+.page-banner h1 {
+    color: #fff;
+    font-family: 'Fraunces', serif;
+}
+
+.page-banner p {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* Badges circulaires d'icônes (Dashboard) */
+
+.dashboard-icon-badge {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard-icon-primary {
+    background: rgba(179, 58, 49, 0.1);
+    color: var(--red);
+}
+
+.dashboard-icon-warning {
+    background: rgba(201, 138, 43, 0.12);
+    color: var(--gold);
+}
+
+.dashboard-icon-danger {
+    background: rgba(143, 46, 39, 0.1);
+    color: var(--red-dark);
+}

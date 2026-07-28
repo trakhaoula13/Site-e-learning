@@ -1,0 +1,19 @@
+// Décodage minimal d'un JWT côté client (sans vérification de signature,
+// juste pour lire l'id de l'instructeur connecté depuis le payload)
+export function decodeToken(token) {
+    if (!token) return null;
+    try {
+        const payload = token.split(".")[1];
+        // base64url -> base64 standard
+        const base64 = payload.replace(/-/g, "+").replace(/_/g, "/");
+        const json = decodeURIComponent(
+            atob(base64)
+            .split("")
+            .map((c) => "%" + c.charCodeAt(0).toString(16).padStart(2, "0"))
+            .join("")
+        );
+        return JSON.parse(json);
+    } catch (error) {
+        return null;
+    }
+}
