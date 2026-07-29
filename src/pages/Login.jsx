@@ -28,7 +28,7 @@ function Login() {
             showToast("Connexion réussie", "success");
             navigate("/dashbord");
         } catch (error) {
-            setError("Email ou mot de passe incorrect");
+            setError(error.response?.data?.message || "Email ou mot de passe incorrect");
         } finally {
             setIsSubmitting(false);
         }
@@ -67,4 +67,3 @@ function Login() {
 }
 
 export default Login;
-
