@@ -23,7 +23,7 @@ import AddInstructor from "./pages/AddInstructor.jsx";
 import Dashboard from "./pages/Dashbord.jsx";
 import Contact from "./pages/Contact.jsx";
 import NotFound from "./pages/NotFound.jsx";
-import Register from "./pages/Register.jsx";
+
 function App() {
   return (
     <AuthProvider>
@@ -35,6 +35,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<Courses />} />
             <Route path="/courses/:id" element={<CourseDetails />} />
+            <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
@@ -70,9 +71,9 @@ function App() {
               </AdminRoute>
             } />
             <Route path="/edit-course/:id" element={
-              <PrivateRoute>
+              <AdminRoute>
                 <EditCourse />
-              </PrivateRoute>
+              </AdminRoute>
             } />
             <Route path="/add-instructor" element={
               <AdminRoute>
@@ -90,4 +91,3 @@ function App() {
 }
 
 export default App;
-

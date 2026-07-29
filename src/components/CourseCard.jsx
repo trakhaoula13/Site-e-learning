@@ -6,11 +6,8 @@ import { useToast } from "../context/ToastContext";
 import { deleteCours } from "../services/courseService";
 
 function CourseCard({ course, onDelete }) {
-    const { isAdmin, currentInstructorId } = useContext(AuthContext);
+    const { isAdmin } = useContext(AuthContext);
     const { showToast } = useToast();
-
-    const ownerId = course.instructorId?._id || course.instructorId;
-    const canManage = isAdmin || (currentInstructorId && ownerId === currentInstructorId);
 
     const handleDelete = async () => {
         if (!window.confirm(`Supprimer le cours "${course.title}" ?`)) return;
@@ -42,8 +39,8 @@ function CourseCard({ course, onDelete }) {
                         Voir les détails
                     </Link>
 
-                    {/* Modifier/Supprimer : admin (tout cours) ou instructeur propriétaire (son cours) */}
-                    {canManage && (
+                    {/* Modifier/Supprimer : réservé à l'admin uniquement */}
+                    {isAdmin && (
                         <div className="d-flex gap-2 mt-2">
                             <Link to={`/edit-course/${course._id}`} className="btn btn-outline-dark btn-sm flex-fill">
                                 <Pencil size={14} className="me-1" /> Modifier
@@ -60,4 +57,3 @@ function CourseCard({ course, onDelete }) {
 }
 
 export default CourseCard;
-
